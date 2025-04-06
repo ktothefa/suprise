@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+        <style>
+            
+            body {
+                background-image: url('juanitta1.jpg');  
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                color: white;
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            
+            .location_form {
+                background-color: rgba(0, 0, 0, 0.7);  
+                padding: 20px;
+                border-radius: 10px;
+                width: 350px;
+                color: white;
+            }
+
+            .location_form h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .location_form label {
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
+            .location_form select {
+                font-size: 18px;
+                padding: 10px;
+                width: 100%;
+                margin-top: 10px;
+                border-radius: 8px;
+                border: none;
+            }
+
+            .header_text {
+                font-size: 24px;
+                font-weight: bold;
+                color: #fff;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            }
+
+            .buttons {
+                margin-top: 20px;
+            }
+
+            .btn {
+                background-color: #ff66b2;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 8px;
+                margin-top: 10px;
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+            <div class="location_form">
+                <h2 class="header_text">Select your preferred location</h2>
+                <form id="locationForm">
+                    <label for="location">Location:</label>
+                    <select id="location" class="location_select">
+                        <option value="Cypher Zone (Labone)">Cypher Zone (Labone)</option>
+                        <option value="Wine and Art (East Legon)">Wine and Art (East Legon)</option>
+                        <option value="Game it Up Inflatable Park and Arcade (Atomic Palace Mall)">Game it Up Inflatable Park and Arcade (Atomic Palace Mall)</option>
+                        <option value="Aura Design Studio (East Legon)">Aura Design Studio (East Legon)</option>
+                        <option value="Movie">Accra Mall (Labone)</option>
+                    </select>
+                </form>
+
+                <div class="buttons">
+                    <button class="btn" id="submitLocationButton" onclick="submitLocation()">Submit</button>
+                    <script>
+                        function submitLocation() {
+                            const selectedLocation = document.getElementById('location').value;
+                            if (selectedLocation) {
+                                alert(`You picked: ${selectedLocation}`);
+                                window.location.href = "yes.html";  
+                            } else {
+                                alert("Please select a location!");
+                            }
+                        }
+                    </script> 
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
