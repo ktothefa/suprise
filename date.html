@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./styles.css">
-    <style>
-        body {
-            background-image: url('juanitta.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body {
+      background-image: url('juanitta.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
 
-        .calendar_input {
-            font-size: 20px;
-            padding: 10px;
-            width: 300px;
-            height: 40px;
-            border-radius: 8px;
-            border: 2px solid #ccc;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
+    .calendar_section {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 12px;
+    }
 
-        .calendar_section {
-            margin: 20px 0;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 12px;
-        }
+    .calendar_input {
+      font-size: 20px;
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
 
-        .header_text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ff66b2;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-        .btn {
-            margin-top: 20px;
-            background-color: #ff66b2;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-    </style>
+    .header_text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <form action="https://formsubmit.co/kelvinaf122@gmail.com" method="POST" class="calendar_section">
-            <input type="hidden" name="_next" value="yes.html">
-            <h2 class="header_text">Pick a day you're free!</h2>
-            <input type="date" name="Preferred Date" class="calendar_input" required>
-            <br>
-            <button class="btn" type="submit">Submit</button>
-        </form>
-    </div>
+  <div class="calendar_section">
+    <h2 class="header_text">Pick a day you're free!</h2>
+    <form id="dateForm">
+      <input type="date" name="Date" class="calendar_input" required>
+      <input type="hidden" name="_next" value="yes.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="Date Selection from Juanitta">
+      <input type="hidden" name="_cc" value="kelvinaf122@gmail.com">
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("dateForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      fetch("https://formsubmit.co/kelvinaf122@gmail.com", {
+        method: "POST",
+        body: formData
+      }).then(() => {
+        window.location.href = "yes.html";
+      });
+    });
+  </script>
 </body>
 </html>
