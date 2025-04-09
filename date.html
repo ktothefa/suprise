@@ -1,79 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="./styles.css">
-  <style>
-    body {
-      background-image: url('juanitta.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+        <style>
+            body {
+                background-image: url('juanitta.jpg'); 
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                color: white;
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
 
-    .calendar_section {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 12px;
-    }
+            .calendar_input {
+                font-size: 20px;
+                padding: 10px;
+                width: 300px;
+                height: 40px;
+                border-radius: 8px;
+                border: 2px solid #ccc;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.8);
+            }
 
-    .calendar_input {
-      font-size: 20px;
-      padding: 10px;
-      width: 250px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: rgba(255, 255, 255, 0.8);
-    }
+            .calendar_section {
+                margin: 20px 0;
+                text-align: center;
+            }
 
-    .btn {
-      margin-top: 20px;
-      padding: 12px 20px;
-      background-color: #ff66b2;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+            .header_text {
+                font-size: 24px;
+                font-weight: bold;
+                color: #fff;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+            <div class="calendar_section">
+                <h2 class="header_text">Pick a day you're free!</h2>
+                <input type="date" id="calendarInput" class="calendar_input">
+            </div>
 
-    .header_text {
-      font-size: 24px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div class="calendar_section">
-    <h2 class="header_text">Pick a day you're free!</h2>
-    <form id="dateForm">
-      <input type="date" name="Date" class="calendar_input" required>
-      <input type="hidden" name="_next" value="yes.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_subject" value="Date Selection from Juanitta">
-      <input type="hidden" name="_cc" value="kelvinaf122@gmail.com">
-      <button type="submit" class="btn">Submit</button>
-    </form>
-  </div>
-
-  <script>
-    document.getElementById("dateForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const formData = new FormData(this);
-      fetch("https://formsubmit.co/kelvinaf122@gmail.com", {
-        method: "POST",
-        body: formData
-      }).then(() => {
-        window.location.href = "yes.html";
-      });
-    });
-  </script>
-</body>
+            <div class="buttons">
+                <button class="btn" id="submitButton" onclick="nextPage()">Submit</button>
+                <script>
+                    function nextPage() {
+                        const selectedDate = document.getElementById('calendarInput').value;
+                        if (selectedDate) {
+                            alert(`You picked: ${selectedDate}`);
+                            window.location.href = "location.html";  <!-- Redirect to location page -->
+                        } else {
+                            alert("Please select a date!");
+                        }
+                    }
+                </script> 
+            </div>
+        </div>
+    </body>
 </html>
